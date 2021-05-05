@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.project">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Project">
+        <activity android:name=".courseItem.MemberListAdapter"></activity>
+        <activity android:name=".courseItem.Member" />
+        <activity android:name=".courseItem.ExamListAdapter" />
+        <activity android:name=".courseItem.ExamList" />
+        <activity android:name=".courseItem.Exam" />
+        <activity android:name=".courseItem.AssignmentList" />
+        <activity android:name=".courseItem.Assignment" />
+        <activity android:name=".CourseMenu" />
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>

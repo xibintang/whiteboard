@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ColorPurpleLight">#FFBB86FC</color>
+    <color name="ColorPurpleDark">#FF6200EE</color>
+    <color name="ColorPurpleSuperDark">#FF3700B3</color>
+    <color name="ColorTeal">#FF03DAC5</color>
+    <color name="ColorTealDark">#FF018786</color>
+    <color name="ColorBlack">#FF000000</color>
+    <color name="ColorWhite">#FFFFFFFF</color>
+    <color name="ColorGray">#AAA8A8</color>
+    <color name="Transparent">#00000000</color>
+    <color name="blue">#2196F3</color>
+    <color name="DarkBlue">#2979FF</color>
+</resources>

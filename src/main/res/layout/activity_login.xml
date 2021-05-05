@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NYIT"
+            android:textSize="80sp"
+            android:layout_gravity="center"
+            android:padding="80dp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/user"/>
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/lock"/>
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:inputType="textPassword"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_shape"
+            />
+    </LinearLayout>
+
+</LinearLayout>
