@@ -1,22 +1,19 @@
 package com.example.project;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class ListAdapter extends BaseAdapter {
+public class DiscussionListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
 //    private ArrayList<String> arrayList;
 
-    ListAdapter(Context context){
+    DiscussionListAdapter(Context context){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -42,7 +39,7 @@ public class ListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder{
-        private TextView courseTitle,courseProfessor;
+        private TextView discussionName,discussionContent,discussionComment;
     }
 
 
@@ -53,10 +50,11 @@ public class ListAdapter extends BaseAdapter {
         // You can make objects, methods here
         ViewHolder holder = null;
         if (convertView == null){
-            convertView = layoutInflater.inflate(R.layout.layout_course_list_item,null);
+            convertView = layoutInflater.inflate(R.layout.layout_discussion_list_item,null);
             holder = new ViewHolder();
-            holder.courseTitle = convertView.findViewById(R.id.course_list_title);
-            holder.courseProfessor = convertView.findViewById(R.id.course_list_professor);
+            holder.discussionName = convertView.findViewById(R.id.discussion_list_item_name);
+            holder.discussionContent = convertView.findViewById(R.id.discussion_list_item_content);
+            holder.discussionComment = convertView.findViewById(R.id.discussion_list_item_comment);
 
             convertView.setTag(holder);
 
@@ -68,8 +66,9 @@ public class ListAdapter extends BaseAdapter {
 //        arrayList = new ArrayList<>(10);
 //        arrayList.add("10");
 //        give textView values:
-        holder.courseTitle.setText("Sample");
-        holder.courseProfessor.setText("Sample professor");
+        holder.discussionName.setText("Xibin");
+        holder.discussionContent.setText("This is the discussion area where you can post anything!");
+        holder.discussionComment.setText("12");
 
 
         return convertView;

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".courseItem.ExamList">
+    tools:context=".courseItem.ExamList"
+    android:background="@color/ColorWhite">
     <ListView
         android:id="@+id/exam_list"
         android:layout_width="match_parent"

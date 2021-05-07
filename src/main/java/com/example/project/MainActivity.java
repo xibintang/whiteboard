@@ -5,11 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +45,40 @@ public class MainActivity extends AppCompatActivity {
         courses = new Courses();
         notification = new Notification();
         profile = new Profile();
+
         getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,dashboard).commitAllowingStateLoss();
         setListener();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://localhost:27017/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
+        Call<List<AssignmentResult>> call = retrofitInterface.getAssignments();
+        call.enqueue(new Callback<List<AssignmentResult>>() {
+            @Override
+            public void onResponse(Call<List<AssignmentResult>> call, Response<List<AssignmentResult>> response) {
+                String msg = " ";
+                if(!response.isSuccessful()){
+//                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                List<AssignmentResult> assignments = response.body();
+
+                for(AssignmentResult hw: assignments){
+                    msg += "Name: "+hw.getName()+ "\n";
+                    msg += "Grade: "+ hw.getGrade() + "\n";
+                    msg += "Name: "+hw.getWeight()+ "\n";
+                    msg += "Name: "+hw.isReceived()+ "\n";
+//                    Log.d("Data",msg);
+                }
+            }
+            @Override
+            public void onFailure(Call<List<AssignmentResult>> call, Throwable t) {
+//                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

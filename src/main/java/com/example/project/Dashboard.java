@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +24,7 @@ public class Dashboard extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ListView listView;
 
     public Dashboard() {
         // Required empty public constructor
@@ -58,7 +60,12 @@ public class Dashboard extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        listView = view.findViewById(R.id.dash_board_list);
+        listView.setAdapter(new DashboardListAdapter(view.getContext()));
+
+        return view;
     }
 }

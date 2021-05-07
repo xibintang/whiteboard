@@ -4,13 +4,15 @@
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         >
         <TextView
-            android:id="@+id/member"
+            android:id="@+id/course_grade_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -19,5 +21,16 @@
             android:layout_marginLeft="10dp"
             android:textColor="@color/ColorBlack"
             />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/course_grade_list_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="20/20"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            />
+    </RelativeLayout>
 </LinearLayout>

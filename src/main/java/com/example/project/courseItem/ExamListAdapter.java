@@ -13,10 +13,13 @@ public class ExamListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
+
     ExamListAdapter(Context context){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
+
+    ExamListAdapter(){}
     @Override
     // how long is the list
     public int getCount() {
@@ -38,6 +41,7 @@ public class ExamListAdapter extends BaseAdapter {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         ViewHolder holder = null;
         if (convertView == null){
             convertView = layoutInflater.inflate(R.layout.layout_exam_list_item,null);

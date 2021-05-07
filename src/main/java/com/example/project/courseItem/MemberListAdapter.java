@@ -9,14 +9,19 @@ import android.widget.TextView;
 
 import com.example.project.R;
 
+import java.util.ArrayList;
+
 public class MemberListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
+    private ArrayList<String> arrayList;
+
     MemberListAdapter(Context context){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
+    MemberListAdapter(){}
     @Override
     // how long is the list
     public int getCount() {
@@ -50,7 +55,18 @@ public class MemberListAdapter extends BaseAdapter {
         }
 
         // give textView values:
-        holder.member.setText("Student");
+        // we can use for loop to control the data displayed on each line:
+        int number = 0;
+        // we have 5 lines of data in our List.
+        // getTag method: retrieve the holder itself. We can use it further action
+        arrayList = new ArrayList<>(10);
+        arrayList.add("Xibin");
+        arrayList.add("Xibin 2");
+        arrayList.add("Xibin 3");
+        arrayList.add("Xibin 3");
+        arrayList.add("Xibin 4");
+
+        holder.member.setText(arrayList.get(position));
 
         return convertView;
     }

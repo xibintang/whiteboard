@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import com.example.project.R;
 
-public class AssignmentListAdapter extends BaseAdapter {
+public class CourseGradeListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
 
-    AssignmentListAdapter(Context context){
+    CourseGradeListAdapter(Context context){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -35,17 +35,16 @@ public class AssignmentListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder{
-        private TextView assignmentTitle,assignmentTimeLimit,assignmentDueDate;
+        private TextView courseGradeTitle,courseGradeScore;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null){
-            convertView = layoutInflater.inflate(R.layout.layout_assignment_list_item,null);
+            convertView = layoutInflater.inflate(R.layout.layout_course_grade_list_item,null);
             holder = new ViewHolder();
-            holder.assignmentTitle = convertView.findViewById(R.id.assignment_list_title);
-            holder.assignmentTimeLimit = convertView.findViewById(R.id.assignment_time_limit);
-            holder.assignmentDueDate = convertView.findViewById(R.id.assignment_due_date);
+            holder.courseGradeTitle = convertView.findViewById(R.id.course_grade_list_title);
+            holder.courseGradeScore = convertView.findViewById(R.id.course_grade_list_score);
 
             convertView.setTag(holder);
 
@@ -56,9 +55,8 @@ public class AssignmentListAdapter extends BaseAdapter {
         // give textView values:
         // retrieve data from database and input here
 
-        holder.assignmentTitle.setText("Assignment Sample");
-        holder.assignmentTimeLimit.setText("Sample Time limit");
-        holder.assignmentDueDate.setText("Due date: ");
+        holder.courseGradeTitle.setText("Assignment name");
+        holder.courseGradeScore.setText(20+"/"+20);
 
         return convertView;
     }

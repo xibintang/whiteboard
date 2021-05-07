@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.project.courseItem.AssignmentList;
+import com.example.project.courseItem.CourseGrade;
 import com.example.project.courseItem.ExamList;
 import com.example.project.courseItem.Member;
 
@@ -16,6 +18,7 @@ import java.nio.channels.InterruptedByTimeoutException;
 public class CourseMenu extends AppCompatActivity {
 
     private ImageView resources,grades,exams,assignment,announcement,member;
+    private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,8 @@ public class CourseMenu extends AppCompatActivity {
         assignment = findViewById(R.id.assignment);
         announcement = findViewById(R.id.announcement);
         member = findViewById(R.id.member);
+        listView = findViewById(R.id.discussion_list);
+        listView.setAdapter(new DiscussionListAdapter(this));
         setOnClick();
     }
 
@@ -48,6 +53,8 @@ public class CourseMenu extends AppCompatActivity {
                 case R.id.resources:
                     break;
                 case R.id.grades:
+                    intent = new Intent(CourseMenu.this, CourseGrade.class);
+                    startActivity(intent);
                     break;
                 case R.id.exams:
                     intent = new Intent(CourseMenu.this, ExamList.class);

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Profile">
+    tools:context=".Profile"
+    android:background="@color/ColorWhite">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -13,11 +14,12 @@
         android:orientation="horizontal"
         android:background="@drawable/frame4">
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/user_circle"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,14 +37,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="University"
+                android:text="NYIT"
                 />
         </LinearLayout>
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:background="@drawable/input_stroke"
@@ -54,7 +56,7 @@
         />
     <Button
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:background="@drawable/input_stroke"

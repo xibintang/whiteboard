@@ -79,7 +79,13 @@ public class Courses extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // parameters: position - allows you to jump into different activities based on the position of the item.
+                // intent - jumps to the course menu activity
                 Intent intent = new Intent(view.getContext(),CourseMenu.class);
+
+                // You can use position number to control what happened after clicking
+                // the corresponding position item.
+                // for example, you can use if (position == etc){ action }
+                // it is possible that you transfer data from one activity to another
                 Toast.makeText(view.getContext(), ""+ id +" "+position, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }

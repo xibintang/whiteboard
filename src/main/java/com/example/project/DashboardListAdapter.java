@@ -1,22 +1,19 @@
 package com.example.project;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class ListAdapter extends BaseAdapter {
+public class DashboardListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
 //    private ArrayList<String> arrayList;
 
-    ListAdapter(Context context){
+    DashboardListAdapter(Context context){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -42,7 +39,7 @@ public class ListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder{
-        private TextView courseTitle,courseProfessor;
+        private TextView dashboardTitle,dashboardName,dashboardContent,dashboardDate;
     }
 
 
@@ -53,10 +50,12 @@ public class ListAdapter extends BaseAdapter {
         // You can make objects, methods here
         ViewHolder holder = null;
         if (convertView == null){
-            convertView = layoutInflater.inflate(R.layout.layout_course_list_item,null);
+            convertView = layoutInflater.inflate(R.layout.layout_dashboard_list_item,null);
             holder = new ViewHolder();
-            holder.courseTitle = convertView.findViewById(R.id.course_list_title);
-            holder.courseProfessor = convertView.findViewById(R.id.course_list_professor);
+            holder.dashboardTitle = convertView.findViewById(R.id.dash_board_item_title);
+            holder.dashboardName = convertView.findViewById(R.id.dash_board_item_name);
+            holder.dashboardContent = convertView.findViewById(R.id.dash_board_item_content);
+            holder.dashboardDate = convertView.findViewById(R.id.dash_board_item_date);
 
             convertView.setTag(holder);
 
@@ -68,9 +67,10 @@ public class ListAdapter extends BaseAdapter {
 //        arrayList = new ArrayList<>(10);
 //        arrayList.add("10");
 //        give textView values:
-        holder.courseTitle.setText("Sample");
-        holder.courseProfessor.setText("Sample professor");
-
+        holder.dashboardTitle.setText("Programming 1");
+        holder.dashboardName.setText("professor xyz");
+        holder.dashboardContent.setText("This is the content section where you can post anything!");
+        holder.dashboardDate.setText("5/10/2021");
 
         return convertView;
     }

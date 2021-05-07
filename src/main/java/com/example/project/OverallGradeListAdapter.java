@@ -7,10 +7,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class OverallGradeListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
+    private ArrayList<String> arrayList;
+    private ArrayList<Integer> gradePoint;
     OverallGradeListAdapter(Context context){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
@@ -18,7 +23,7 @@ public class OverallGradeListAdapter extends BaseAdapter {
     @Override
     // how long is the list
     public int getCount() {
-        return 5;
+        return 3;
     }
 
     @Override
@@ -34,9 +39,12 @@ public class OverallGradeListAdapter extends BaseAdapter {
     static class ViewHolder{
         private TextView courseTitle,courseProfessor,courseGrade;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         ViewHolder holder = null;
+
         if (convertView == null){
             convertView = layoutInflater.inflate(R.layout.layout_overall_grade_list_item,null);
             holder = new ViewHolder();
@@ -50,8 +58,19 @@ public class OverallGradeListAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
+        arrayList = new ArrayList<>(10);
+        gradePoint = new ArrayList<>(10);
+        arrayList.add("Programming 1");
+        arrayList.add("Writing");
+        arrayList.add("Reading");
+        gradePoint.add(50);
+        gradePoint.add(80);
+        gradePoint.add(95);
+
         // give textView values:
-        holder.courseGrade.setText("4.0");
+        holder.courseTitle.setText(arrayList.get(position));
+        holder.courseProfessor.setText("professor xyz");
+        holder.courseGrade.setText(gradePoint.get(position) + "%");
 
         return convertView;
     }
