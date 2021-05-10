@@ -32,6 +32,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/user"/>
             <EditText
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
@@ -51,6 +52,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/lock"/>
             <EditText
+                android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"

@@ -14,9 +14,17 @@ public class ListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
+    private ArrayList<String> courseListName;
+    private ArrayList<Integer> courseListNumber;
+    private ArrayList<String> courseListID;
+    private int courseCount;
 //    private ArrayList<String> arrayList;
 
-    ListAdapter(Context context){
+    ListAdapter(Context context, ArrayList<String> courseListName, ArrayList<Integer> courseListNumber, ArrayList<String> courseListID, int courseCount){
+        this.courseListName = courseListName;
+        this.courseListNumber = courseListNumber;
+        this.courseListID = courseListID;
+        this.courseCount = courseCount;
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -25,7 +33,7 @@ public class ListAdapter extends BaseAdapter {
     public int getCount() {
         // retrieve the number of courses from data base
         // I set 5 as a constant for testing
-        return 5;
+        return courseCount;
     }
 
     @Override
@@ -38,7 +46,7 @@ public class ListAdapter extends BaseAdapter {
         // return a unique id which corresponds to the item in the list
         // you can set your own
         // can be use to distinguish different courses
-        return position;
+        return courseListNumber.get(position);
     }
 
     static class ViewHolder{
@@ -68,8 +76,8 @@ public class ListAdapter extends BaseAdapter {
 //        arrayList = new ArrayList<>(10);
 //        arrayList.add("10");
 //        give textView values:
-        holder.courseTitle.setText("Sample");
-        holder.courseProfessor.setText("Sample professor");
+        holder.courseTitle.setText(courseListName.get(position));
+        holder.courseProfessor.setText("TBD");
 
 
         return convertView;

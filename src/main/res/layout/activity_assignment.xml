@@ -18,6 +18,7 @@
         android:orientation="vertical"
         >
         <TextView
+            android:id="@+id/assignment_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
@@ -33,6 +34,7 @@
             android:layout_marginTop="5dp"
             >
             <TextView
+                android:id="@+id/assignment_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20"
@@ -57,6 +59,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
             <TextView
+                android:id="@+id/assignment_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -71,7 +74,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
-            android:text="5/4/2020"
+            android:text=""
             />
 
 

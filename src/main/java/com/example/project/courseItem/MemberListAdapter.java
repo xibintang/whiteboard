@@ -15,17 +15,18 @@ public class MemberListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private ArrayList<String> arrayList;
+    private ArrayList<String> memberList;
 
-    MemberListAdapter(Context context){
+    MemberListAdapter(Context context, ArrayList<String> memberList){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
+        this.memberList = memberList;
     }
     MemberListAdapter(){}
     @Override
     // how long is the list
     public int getCount() {
-        return 5;
+        return memberList.size();
     }
 
     @Override
@@ -59,14 +60,9 @@ public class MemberListAdapter extends BaseAdapter {
         int number = 0;
         // we have 5 lines of data in our List.
         // getTag method: retrieve the holder itself. We can use it further action
-        arrayList = new ArrayList<>(10);
-        arrayList.add("Xibin");
-        arrayList.add("Xibin 2");
-        arrayList.add("Xibin 3");
-        arrayList.add("Xibin 3");
-        arrayList.add("Xibin 4");
 
-        holder.member.setText(arrayList.get(position));
+
+        holder.member.setText(memberList.get(position));
 
         return convertView;
     }

@@ -13,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project.courseItem.Assignment;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private Courses courses;
     private Notification notification;
     private Profile profile;
+    private String studentID;
+    private String[] courseListID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navDashboard = findViewById(R.id.nav_dashboard);
@@ -40,45 +47,30 @@ public class MainActivity extends AppCompatActivity {
         navNotification = findViewById(R.id.nav_notification);
         navProfile = findViewById(R.id.nav_profile);
 
-        dashboard = new Dashboard();
-        grades = new Grades();
-        courses = new Courses();
+        // assign the arrayList.
+
+        studentID = getIntent().getStringExtra("id");
+
+        // these are fragment, and you can use newInstance() to pass data to each fragment.
+        // what data to pass? Notification content, Grades, Course list,
+        dashboard = Dashboard.newInstance(getIntent().getStringArrayListExtra("notificationList")
+                ,getIntent().getIntExtra("notificationCount",0));
+
+        grades = Grades.newInstance(getIntent().getStringArrayListExtra("courseName"),getIntent().getIntegerArrayListExtra("courseGrades"),getIntent().getStringArrayListExtra("courseName").size());
+
+        Log.d("courseSize: ",getIntent().getStringArrayListExtra("courseName").size() + "");
+        courses = Courses.newInstance(getIntent().getStringArrayListExtra("courseName")
+                ,getIntent().getIntegerArrayListExtra("courseNumber")
+                ,getIntent().getStringArrayListExtra("studentCourseList")
+                ,getIntent().getStringArrayListExtra("courseName").size()
+                ,studentID);
+
+
         notification = new Notification();
         profile = new Profile();
 
         getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,dashboard).commitAllowingStateLoss();
         setListener();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:27017/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
-        Call<List<AssignmentResult>> call = retrofitInterface.getAssignments();
-        call.enqueue(new Callback<List<AssignmentResult>>() {
-            @Override
-            public void onResponse(Call<List<AssignmentResult>> call, Response<List<AssignmentResult>> response) {
-                String msg = " ";
-                if(!response.isSuccessful()){
-//                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                List<AssignmentResult> assignments = response.body();
-
-                for(AssignmentResult hw: assignments){
-                    msg += "Name: "+hw.getName()+ "\n";
-                    msg += "Grade: "+ hw.getGrade() + "\n";
-                    msg += "Name: "+hw.getWeight()+ "\n";
-                    msg += "Name: "+hw.isReceived()+ "\n";
-//                    Log.d("Data",msg);
-                }
-            }
-            @Override
-            public void onFailure(Call<List<AssignmentResult>> call, Throwable t) {
-//                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 

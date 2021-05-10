@@ -22,7 +22,7 @@ public class DiscussionListAdapter extends BaseAdapter {
     public int getCount() {
         // retrieve the number of courses from data base
         // I set 5 as a constant for testing
-        return 5;
+        return 1;
     }
 
     @Override

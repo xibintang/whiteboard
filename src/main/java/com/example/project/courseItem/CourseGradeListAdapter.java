@@ -9,19 +9,27 @@ import android.widget.TextView;
 
 import com.example.project.R;
 
+import java.util.ArrayList;
+
 public class CourseGradeListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
+    private ArrayList<String> assignmentName;
+    private ArrayList<Integer> assignmentGrade;
+    private ArrayList<Integer> assignmentWeight;
 
-    CourseGradeListAdapter(Context context){
+    CourseGradeListAdapter(Context context, ArrayList<String> assignmentName, ArrayList<Integer> assignmentGrade, ArrayList<Integer> assignmentWeight){
         this.context = context;
+        this.assignmentGrade = assignmentGrade;
+        this.assignmentName = assignmentName;
+        this.assignmentWeight = assignmentWeight;
         this.layoutInflater = LayoutInflater.from(context);
     }
     @Override
     // how long is the list
     public int getCount() {
-        return 5;
+        return assignmentName.size();
     }
 
     @Override
@@ -55,8 +63,8 @@ public class CourseGradeListAdapter extends BaseAdapter {
         // give textView values:
         // retrieve data from database and input here
 
-        holder.courseGradeTitle.setText("Assignment name");
-        holder.courseGradeScore.setText(20+"/"+20);
+        holder.courseGradeTitle.setText(assignmentName.get(position));
+        holder.courseGradeScore.setText(assignmentGrade.get(position).toString());
 
         return convertView;
     }

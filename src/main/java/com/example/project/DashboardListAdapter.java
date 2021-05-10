@@ -7,13 +7,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DashboardListAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
+    private ArrayList<String> notificationList;
+    private int notificationCount;
 //    private ArrayList<String> arrayList;
 
-    DashboardListAdapter(Context context){
+    DashboardListAdapter(Context context, ArrayList<String> list, int notificationCount){
+        notificationList = list;
+        this.notificationCount = notificationCount;
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -22,7 +28,7 @@ public class DashboardListAdapter extends BaseAdapter {
     public int getCount() {
         // retrieve the number of courses from data base
         // I set 5 as a constant for testing
-        return 5;
+        return notificationCount;
     }
 
     @Override
@@ -67,10 +73,10 @@ public class DashboardListAdapter extends BaseAdapter {
 //        arrayList = new ArrayList<>(10);
 //        arrayList.add("10");
 //        give textView values:
-        holder.dashboardTitle.setText("Programming 1");
-        holder.dashboardName.setText("professor xyz");
-        holder.dashboardContent.setText("This is the content section where you can post anything!");
-        holder.dashboardDate.setText("5/10/2021");
+        holder.dashboardTitle.setText(notificationList.get(position*2));
+        holder.dashboardName.setText("TBD");
+        holder.dashboardContent.setText(notificationList.get(position*2+1));
+        holder.dashboardDate.setText("null");
 
         return convertView;
     }

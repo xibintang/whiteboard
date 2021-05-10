@@ -23,7 +23,7 @@ public class ExamListAdapter extends BaseAdapter {
     @Override
     // how long is the list
     public int getCount() {
-        return 5;
+        return 0;
     }
 
     @Override

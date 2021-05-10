@@ -16,7 +16,7 @@ public class Member extends AppCompatActivity {
         setContentView(R.layout.activity_member);
         setTitle("Member");
         memberList = findViewById(R.id.member_list);
-        memberList.setAdapter(new MemberListAdapter(Member.this));
+        memberList.setAdapter(new MemberListAdapter(Member.this,getIntent().getStringArrayListExtra("memberList")));
 
     }
 }
